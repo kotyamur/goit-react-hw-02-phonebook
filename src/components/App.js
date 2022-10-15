@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -15,11 +16,6 @@ export class App extends Component {
     filter: '',
   };
 
-  // changeInput = e => {
-  //   const { name, value } = e.currentTarget;
-  //   this.setState({ [name]: value });
-  // };
-
   addContact = (name, number) => {
     const contact = {
       id: nanoid(),
@@ -31,17 +27,6 @@ export class App extends Component {
       contacts: [contact, ...prevState.contacts],
     }));
   };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   const { name, number } = this.state;
-  //   this.addContact(name, number);
-  //   this.reset();
-  // };
-
-  // reset = () => {
-  //   this.setState({ name: '', number: '' });
-  // };
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
@@ -63,38 +48,13 @@ export class App extends Component {
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        {/* <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-              value={name}
-              onChange={this.changeInput}
-            />
-          </label>
-          <label>
-            Number
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-              value={number}
-              onChange={this.changeInput}
-            />
-          </label>
-          <button type="submit">Add contact</button>
-        </form> */}
+
         <h2>Contacts</h2>
-        <label>
+        <Filter value={filter} onChange={this.changeFilter} />
+        {/* <label>
           Find contacts by name
           <input value={filter} onChange={this.changeFilter} />
-        </label>
+        </label> */}
 
         <ul>
           {filteredContacts.map(contact => (
