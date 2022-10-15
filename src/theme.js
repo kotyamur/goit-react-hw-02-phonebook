@@ -19,7 +19,7 @@ export const theme = {
     s: '14px',
     m: '16px',
     l: '32px',
-    xl: '64px',
+    xl: '48px',
   },
   fontWeights: {
     normal: 400,
