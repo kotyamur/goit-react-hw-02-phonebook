@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { ContactForm } from './ContactForm/ContactForm';
 
 export class App extends Component {
   state = {
@@ -9,15 +10,15 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
     filter: '',
   };
 
-  changeInput = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
-  };
+  // changeInput = e => {
+  //   const { name, value } = e.currentTarget;
+  //   this.setState({ [name]: value });
+  // };
 
   addContact = (name, number) => {
     const contact = {
@@ -31,16 +32,16 @@ export class App extends Component {
     }));
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { name, number } = this.state;
-    this.addContact(name, number);
-    this.reset();
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { name, number } = this.state;
+  //   this.addContact(name, number);
+  //   this.reset();
+  // };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
-  };
+  // reset = () => {
+  //   this.setState({ name: '', number: '' });
+  // };
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
@@ -56,12 +57,13 @@ export class App extends Component {
   };
 
   render() {
-    const { name, number, filter } = this.state;
+    const { filter } = this.state;
     const filteredContacts = this.getContactsByName();
     return (
       <div>
-        <h2>Phonebook</h2>
-        <form onSubmit={this.handleSubmit}>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.addContact} />
+        {/* <form onSubmit={this.handleSubmit}>
           <label>
             Name
             <input
@@ -87,7 +89,7 @@ export class App extends Component {
             />
           </label>
           <button type="submit">Add contact</button>
-        </form>
+        </form> */}
         <h2>Contacts</h2>
         <label>
           Find contacts by name
