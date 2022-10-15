@@ -16,6 +16,11 @@ export class App extends Component {
   };
 
   addContact = (name, number) => {
+    if (this.checkContactsName(name)) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
     const contact = {
       id: nanoid(),
       name,
@@ -40,13 +45,24 @@ export class App extends Component {
     );
   };
 
+  checkContactsName = name => {
+    const { contacts } = this.state;
+    const contactsNames = contacts.map(contact => contact.name);
+    // const normalizedNames = contactsNames.toLowerCase();
+    // const normalizedName = name.toLowerCase();
+    return contactsNames.some(value => value === name);
+  };
+
   render() {
     const { filter } = this.state;
     const filteredContacts = this.getContactsByName();
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm
+          onSubmit={this.addContact}
+          checkContactsName={this.checkContactsName}
+        />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
