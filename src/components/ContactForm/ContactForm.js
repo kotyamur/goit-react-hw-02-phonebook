@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Container, SubmitButton } from './ContactForm.styled';
 
 export class ContactForm extends Component {
   state = {
@@ -27,7 +28,7 @@ export class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Container onSubmit={this.handleSubmit}>
         <label>
           Name
           <input
@@ -52,8 +53,8 @@ export class ContactForm extends Component {
             onChange={this.changeInput}
           />
         </label>
-        <button type="submit">Add contact</button>
-      </form>
+        <SubmitButton type="submit">Add contact</SubmitButton>
+      </Container>
     );
   }
 }

@@ -1,27 +1,21 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.ul`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   gap: 20px;
-  width: 350px;
-  padding: ${p => p.theme.space[4]}px;
-  margin-bottom: ${p => p.theme.space[5]}px;
-  border: ${p => p.theme.borders.normal};
+  width: 100%;
+  padding: ${p => p.theme.space[1]}px;
   font-size: ${p => p.theme.fontSizes.m};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  label {
-    display: flex;
-    gap: 20px;
-  }
 `;
 
-export const SubmitButton = styled.button`
+export const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
-  padding: 12px 20px;
+  padding: 6px 20px;
+
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.white};

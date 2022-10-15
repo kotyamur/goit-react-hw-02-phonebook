@@ -1,6 +1,7 @@
 import { ContactItem } from '../ContactItem/ContactItem';
+import { Container } from './ContactList.styled';
 export const ContactList = ({ contacts, onDeleteContact }) => (
-  <ul>
+  <Container>
     {contacts.map(({ id, name, number }) => (
       <ContactItem
         key={id}
@@ -10,5 +11,5 @@ export const ContactList = ({ contacts, onDeleteContact }) => (
         id={id}
       />
     ))}
-  </ul>
+  </Container>
 );
