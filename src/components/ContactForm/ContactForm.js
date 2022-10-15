@@ -1,10 +1,15 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Container, SubmitButton } from './ContactForm.styled';
 
 export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
+  };
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
   };
 
   changeInput = e => {
