@@ -22,12 +22,23 @@ export class App extends Component {
     }));
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name } = this.state;
+    this.addContact(name);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '' });
+  };
+
   render() {
     const { contacts, name } = this.state;
     return (
       <div>
         <h2>Phonebook</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             Name
             <input
