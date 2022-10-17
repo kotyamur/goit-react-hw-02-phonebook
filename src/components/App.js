@@ -60,7 +60,7 @@ export class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filteredContacts = this.getContactsByName();
     return (
       <Container>
@@ -68,11 +68,16 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
 
         <SecondTitle>Contacts</SecondTitle>
-        <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={this.deleteContact}
-        />
+        {contacts.length > 0 && (
+          <>
+            <Filter value={filter} onChange={this.changeFilter} />
+            <ContactList
+              contacts={filteredContacts}
+              onDeleteContact={this.deleteContact}
+            />
+          </>
+        )}
+        {contacts.length === 0 && <p>There is no contacts</p>}
       </Container>
     );
   }
