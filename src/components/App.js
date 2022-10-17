@@ -16,7 +16,8 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = (name, number) => {
+  addContact = newContact => {
+    const { name, number } = newContact;
     if (this.checkContactsName(name)) {
       alert(`${name} is already in contacts.`);
       return;
@@ -48,10 +49,8 @@ export class App extends Component {
 
   checkContactsName = name => {
     const { contacts } = this.state;
-    const contactsNames = contacts.map(contact => contact.name);
-    // const normalizedNames = contactsNames.toLowerCase();
-    // const normalizedName = name.toLowerCase();
-    return contactsNames.some(value => value === name);
+    const normalizedName = name.toLowerCase();
+    return contacts.some(({ name }) => normalizedName === name.toLowerCase());
   };
 
   deleteContact = contactId => {

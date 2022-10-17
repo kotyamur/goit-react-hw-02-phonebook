@@ -21,7 +21,12 @@ export class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = this.state;
 
-    this.props.onSubmit(name, number);
+    const newContact = {
+      name,
+      number,
+    };
+
+    this.props.onSubmit(newContact);
 
     this.reset();
   };
