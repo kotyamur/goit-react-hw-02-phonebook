@@ -12,8 +12,8 @@ export const Container = styled.form`
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};
   label {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
   }
 `;
 
